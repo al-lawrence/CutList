@@ -309,9 +309,10 @@ class Reporter
     levelHasComponents  = false
     for c in entityList
       inSelection = selection.contains? c
+      puts "examining a #{c.class}" if CutList.verboseComponentDiscovery
       #Sub components do not appear as part of the selection so let them through but only look at visible sub-components
-      if ( (inSelection || level>1) && c.layer.visible? && !c.hidden?)
-        
+      #   skip over non Drawingelements like AttributeDictionaries
+      if ( (inSelection || level>1) && c.is_a?(Sketchup::Drawingelement) && c.layer.visible? && !c.hidden?)
         if ( (c.is_a? (Sketchup::ComponentInstance)) || (c.is_a? (Sketchup::Group)) )
           # get the name of the component or group or try the inferred name based on its parent if it is a group with no name
           compName = nil
