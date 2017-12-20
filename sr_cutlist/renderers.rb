@@ -199,7 +199,7 @@ class HtmlLayoutRenderer  < LayoutRenderer
     html = html + " cutlistLayout.fillRect(#{x},#{y},#{length},#{height});"
     html = html + " cutlistLayout.setStroke(#{penThickness});"
     html = html + setColor("black")
-    html = html + " cutlistLayout.setFont(\"arial\",\"10px\",Font.BOLD);"  
+    html = html + " cutlistLayout.setFont(\"arial\",\"7px\",Font.BOLD);"
     # outline the rectangle using black
     html = html + " cutlistLayout.drawRect(#{x},#{y},#{length},#{height});"
     html = html + " cutlistLayout.drawStringRect(\"#{label}\",#{x},#{labely},#{length},\"center\");"

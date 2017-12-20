@@ -360,7 +360,8 @@ class HtmlLayoutDriver < HtmlOutputDriver
   def renderPart(part)
     # get the relative coordinates for this part ( returns an array containing x,y)
     coords = part.getLocationOnBoardInPx
-    @html += @renderer.drawPart(2,"#bcbc9a",CutList::string_to_html(part.getName),@x+coords[0],@y+coords[1],part.getLengthPx,part.getWidthPx)
+	# Draw the part's dimensions as well
+    @html += @renderer.drawPart(2,"#bcbc9a",CutList::string_to_html(part.getName) + "<br/>" + part.getLength.to_s + "x" + part.getWidth.to_s ,@x+coords[0],@y+coords[1],part.getLengthPx,part.getWidthPx)
   end
   
   # use the layout gui to display the output
