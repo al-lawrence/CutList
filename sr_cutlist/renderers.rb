@@ -117,9 +117,9 @@ class LayoutRenderer
     @newSection = true
     @pageHeight = 0
   end
-  def drawPart(penThickness,color,label,x,y,length, height)
+  def drawPart(penThickness,color,layoutFontSize,label,x,y,length, height)
   end
-  def drawBoard(penThickness,color,label,x,y,length,height)
+  def drawBoard(penThickness,color,layoutFontSize,label,x,y,length,height)
   end
 end
 
@@ -190,7 +190,7 @@ class HtmlLayoutRenderer  < LayoutRenderer
   # color must be a color name string( eg 'blue' ) or hex string( eg #0000ff)
   # x,y is top left corner
   # This draws a filled rectangle using the color selected, with a black border and the text in the center
-  def drawPart(penThickness,color,label,x,y,length, height)
+  def drawPart(penThickness,color,layoutFontSize,label,x,y,length, height)
     y = offsetY(y)
     #label is placed in the approx center of the box
     labely = y + (height/2) -5
@@ -199,7 +199,7 @@ class HtmlLayoutRenderer  < LayoutRenderer
     html = html + " cutlistLayout.fillRect(#{x},#{y},#{length},#{height});"
     html = html + " cutlistLayout.setStroke(#{penThickness});"
     html = html + setColor("black")
-    html = html + " cutlistLayout.setFont(\"arial\",\"7px\",Font.BOLD);"
+    html = html + " cutlistLayout.setFont(\"arial\",\"#{layoutFontSize}px\",Font.BOLD);"  
     # outline the rectangle using black
     html = html + " cutlistLayout.drawRect(#{x},#{y},#{length},#{height});"
     html = html + " cutlistLayout.drawStringRect(\"#{label}\",#{x},#{labely},#{length},\"center\");"
@@ -480,7 +480,7 @@ class SvgLayoutRenderer  < HtmlLayoutRenderer
     return html
   end
   
-  def drawPart(penThickness,color,label,x,y,length, height)
+  def drawPart(penThickness,color,layoutFontSize,label,x,y,length, height)
     #label is placed in the approx center of the box
     labely = y + (height/2) +2
     labelx = x + (length/2) + 2

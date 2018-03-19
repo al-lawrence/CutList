@@ -55,6 +55,9 @@ function get_current_options(outFileName,clpFileName){
 	res = res + ',' + document.getElementById('useSawKerf').checked;	
 	res = res + ',' + escape(document.getElementById('sawKerfSize').value);	
 	res = res + ',' + escape(document.getElementById('sawKerfUnits').value);	
+	res = res + ',' + escape(document.getElementById('layoutFontSize').value);
+	res = res + ',' + document.getElementById('includeDimensions').checked;	
+	
 
 return res
 }
@@ -454,6 +457,7 @@ function initBooleanElementValues()
   initBooleanElementFromCookie('displayUnplacedParts');
   initBooleanElementFromCookie('layoutByMaterial');
   initBooleanElementFromCookie('useSawKerf');
+  initBooleanElementFromCookie('includeDimensions');
   //alert( document.cookie);
  } 
  
@@ -473,6 +477,7 @@ function initTextElementValues()
   initTextElementFromCookie('partwords');
   initTextElementFromCookie('sheetwords');
   initTextElementFromCookie('sawKerfSize');
+  initTextElementFromCookie('layoutFontSize');
  }
  
 function initSelectElementValues()
@@ -507,6 +512,7 @@ function saveBooleanElementValues()
   saveBooleanElementToCookie('displayUnplacedParts');
   saveBooleanElementToCookie('layoutByMaterial');
   saveBooleanElementToCookie('useSawKerf');
+  saveBooleanElementToCookie('includeDimensions');
 }
 
 function saveRadioElementValues() { 
@@ -523,6 +529,7 @@ function saveTextElementValues()
   saveTextElementToCookie('partwords');
   saveTextElementToCookie('sheetwords');
   saveTextElementToCookie('sawKerfSize');
+  saveTextElementToCookie('layoutFontSize');
  }
  
 function saveSelectElementValues()
@@ -700,7 +707,8 @@ function numbersOnly(myfield, event, dec)
       <td>&nbsp;</td>
       <td>&nbsp;</td>
       <td align="right"><img src="./images/help.gif" onclick="javascript:handleHelp(21);"></td>
-    </tr>    <tr>
+    </tr>
+    <tr>
       <td align="right">Display unplaced parts</td>
       <td><input id="displayUnplacedParts" name="displayUnplacedParts" checked type="checkbox"></td>
       <td>&nbsp;</td>
@@ -727,6 +735,13 @@ function numbersOnly(myfield, event, dec)
 	    <option id="4th" value="4th">1&frasl;4"</option>
 	    <option id="mm" value="mm">mm</option>
 	  </select>
+      <td align="right"><img src="./images/help.gif" onclick="javascript:handleHelp(16);"></td>
+    </tr>
+    <tr>
+      <td align="right">Layout Font</td>
+      <td colspan="3">
+          <input id="layoutFontSize" name="layoutFontSize" STYLE="color: #FFFFFF; font-family: Verdana; font-weight: bold; font-size: 12px; background-color: #72A4D2;" size=2 maxlength=2 type="text" onKeyPress="return numbersOnly(this, event)">&nbsp;
+	  <input id="includeDimensions" name="includeDimensions" checked type="checkbox">&nbsp;Include Dimensions&nbsp;
       <td align="right"><img src="./images/help.gif" onclick="javascript:handleHelp(16);"></td>
     </tr>
     <tr>

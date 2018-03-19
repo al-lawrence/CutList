@@ -181,6 +181,8 @@ class WebGui < GuiBase
     @useSawKerf = a[34]
     @sawKerfSize = a[35]
     @sawKerfUnits = a[36]
+	@layoutFontSize = a[37]
+	@includeDimensions = a[38]
   end
   
   def getCutlistOptions(a)            
@@ -250,7 +252,9 @@ class WebGui < GuiBase
       :displayUnplacedParts=>(@displayUnplacedParts == "true"),
       :useSawKerf=>(@useSawKerf == "true"),
       :sawKerfSize=>(calcKerfSize(@sawKerfSize,@sawKerfUnits)),
-      :sawKerfUnits=> @sawKerfUnits
+      :sawKerfUnits=> @sawKerfUnits,
+	  :layoutFontSize=> @layoutFontSize,
+	  :includeDimensions=>(@includeDimensions == "true")
     }
     return layout_options
   end

@@ -215,11 +215,13 @@ end
 # output driver for the layout output
 #-----------------------------------------------------------------------------
 class HtmlLayoutDriver < HtmlOutputDriver
-  def initialize(layoutBoards,layoutSheets,unPlacedParts, mname)
+  def initialize(layoutBoards,layoutSheets,unPlacedParts, mname, layoutFontSize, includeDimensions)
     @layoutBoards = layoutBoards
     @layoutSheets = layoutSheets
     @unPlacedParts = unPlacedParts
     @modelName = mname
+	@layoutFontSize = layoutFontSize
+	@includeDimensions = includeDimensions
     @pageNumber = 1
     @totalEfficiency = 0
   end
@@ -360,8 +362,11 @@ class HtmlLayoutDriver < HtmlOutputDriver
   def renderPart(part)
     # get the relative coordinates for this part ( returns an array containing x,y)
     coords = part.getLocationOnBoardInPx
-	# Draw the part's dimensions as well
-    @html += @renderer.drawPart(2,"#bcbc9a",CutList::string_to_html(part.getName) + "<br/>" + part.getLength.to_s + "x" + part.getWidth.to_s ,@x+coords[0],@y+coords[1],part.getLengthPx,part.getWidthPx)
+	if ( @includeDimensions == true )
+		@html += @renderer.drawPart(2,"#bcbc9a",@layoutFontSize,CutList::string_to_html(part.getName) + "<br/>" + part.getLength.to_s + "x" + part.getWidth.to_s ,@x+coords[0],@y+coords[1],part.getLengthPx,part.getWidthPx)
+	else
+		@html += @renderer.drawPart(2,"#bcbc9a",@layoutFontSize,CutList::string_to_html(part.getName),@x+coords[0],@y+coords[1],part.getLengthPx,part.getWidthPx)
+	end
   end
   
   # use the layout gui to display the output
