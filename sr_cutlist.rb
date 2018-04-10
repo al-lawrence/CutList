@@ -18,9 +18,7 @@ require 'sr_cutlist/cutlistutl'  # cutlist utilities for plugin strings and para
 
 module SteveR
 	module CutList
-		@su_cutlist_extension = SketchupExtension.new "CutList",
-		"sr_cutlist/CutListAndMaterials.rb"
-
+		@su_cutlist_extension = SketchupExtension.new "CutList", "sr_cutlist/CutListAndMaterials.rb"
 		@su_cutlist_extension.description = CutList.short_description
 		@su_cutlist_extension.version = CutList.version
 		@su_cutlist_extension.copyright = CutList.year

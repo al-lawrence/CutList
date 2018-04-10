@@ -362,19 +362,14 @@ class HtmlLayoutDriver < HtmlOutputDriver
   def renderPart(part)
     # get the relative coordinates for this part ( returns an array containing x,y)
     coords = part.getLocationOnBoardInPx
-	if ( @includeDimensions == true )
-		@html += @renderer.drawPart(2,"#bcbc9a",@layoutFontSize,CutList::string_to_html(part.getName) + "<br/>" + part.getLength.to_s + "x" + part.getWidth.to_s ,@x+coords[0],@y+coords[1],part.getLengthPx,part.getWidthPx)
-	else
-		@html += @renderer.drawPart(2,"#bcbc9a",@layoutFontSize,CutList::string_to_html(part.getName),@x+coords[0],@y+coords[1],part.getLengthPx,part.getWidthPx)
-	end
+	label = CutList::string_to_html(part.getName)
+	if @includeDimensions then label += ("<br/>" + part.getLength.to_s + "(x)" + part.getWidth.to_s) end
+	@html += @renderer.drawPart(2,"#bcbc9a",@layoutFontSize,label,@x+coords[0],@y+coords[1],part.getLengthPx,part.getWidthPx)
   end
   
   # use the layout gui to display the output
   def displayResults
     @resultGui = LayoutGui.new(@modelName)
-    #DEBUG
-    #puts @html
-    #DEBUG
     @resultGui.show(@html)
   end
 end

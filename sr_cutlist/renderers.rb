@@ -193,7 +193,7 @@ class HtmlLayoutRenderer  < LayoutRenderer
   def drawPart(penThickness,color,layoutFontSize,label,x,y,length, height)
     y = offsetY(y)
     #label is placed in the approx center of the box
-    labely = y + (height/2) -5
+    labely = y + (height/2) - layoutFontSize.to_i - penThickness
     html = ""
     html = html + setColor(color)
     html = html + " cutlistLayout.fillRect(#{x},#{y},#{length},#{height});"

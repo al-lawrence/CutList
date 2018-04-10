@@ -225,6 +225,7 @@ var help20 = "These are the most nebulous of options. Normally you should leave 
              " <br> Imagine a rule which said to always turn left if you got to a Stop sign. You could end up in Timbuktu or back to where you started from, depending on your starting point. It's kinda like that." +
              " <br>You are dealing with an algorithm here which ended up being smarter than I am, so remember, use these to see if you can't go one better but YMMV.";
 var help21 = "Indicate whether the layout should pay attention to the material type or ignore it. If left unchecked, then material will be ignored and all parts will be placed on a generic 'default' material. If checked, then the layout will split parts into different materials and parts will only be placed on a board or sheet of material matching the material name of the part. You might leave this unchecked if you haven't paid much attention to setting material type and you just want to know how the parts would be laid out assuming they are all the same material."
+var help22 = "Applies to parts labels in the HTML layout. Set to a smaller value if some labels overlap others, or bigger if they fit and you'dd like a nice print."
 x = 20;
 y = 70;
 function setVisible(obj)
@@ -742,7 +743,7 @@ function numbersOnly(myfield, event, dec)
       <td colspan="3">
           <input id="layoutFontSize" name="layoutFontSize" STYLE="color: #FFFFFF; font-family: Verdana; font-weight: bold; font-size: 12px; background-color: #72A4D2;" size=2 maxlength=2 type="text" onKeyPress="return numbersOnly(this, event)">&nbsp;
 	  <input id="includeDimensions" name="includeDimensions" checked type="checkbox">&nbsp;Include Dimensions&nbsp;
-      <td align="right"><img src="./images/help.gif" onclick="javascript:handleHelp(16);"></td>
+      <td align="right"><img src="./images/help.gif" onclick="javascript:handleHelp(22);"></td>
     </tr>
     <tr>
  <!--     <td align="right">Saw kerf size</td>
