@@ -363,7 +363,7 @@ class HtmlLayoutDriver < HtmlOutputDriver
     # get the relative coordinates for this part ( returns an array containing x,y)
     coords = part.getLocationOnBoardInPx
 	label = CutList::string_to_html(part.getName)
-	if @includeDimensions then label += ("<br/>" + part.getLength.to_s + "(x)" + part.getWidth.to_s) end
+	if @includeDimensions then label += ("<br/>" + CutList::string_to_html(part.getLength.to_s + "(x)" + part.getWidth.to_s)) end
 	@html += @renderer.drawPart(2,"#bcbc9a",@layoutFontSize,label,@x+coords[0],@y+coords[1],part.getLengthPx,part.getWidthPx)
   end
   
